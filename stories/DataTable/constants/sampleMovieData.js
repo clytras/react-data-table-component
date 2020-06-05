@@ -4,6 +4,7 @@ export default [
   {
     id: 1,
     title: 'Beetlejuice',
+    baseTitle: 'Beetlejuice',
     year: '1988',
     runtime: '92',
     genres: [
@@ -149,6 +150,7 @@ export default [
   {
     id: 11,
     title: 'Apocalypto',
+    baseTitle: 'Apocalypto',
     year: '2006',
     runtime: '139',
     genres: [

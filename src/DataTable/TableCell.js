@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Cell } from './Cell';
@@ -18,7 +18,7 @@ const TableCellStyle = styled(Cell)`
   ${props => props.extendedCellStyle};
 `;
 
-const TableCell = memo(({ id, column, row }) => {
+const TableCell = ({ id, column, row }) => {
   if (column.omit) {
     return null;
   }
@@ -44,7 +44,7 @@ const TableCell = memo(({ id, column, row }) => {
       {column.cell && column.cell(row)}
     </TableCellStyle>
   );
-});
+};
 
 TableCell.propTypes = {
   id: PropTypes.string.isRequired,

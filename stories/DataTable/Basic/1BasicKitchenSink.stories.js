@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { storiesOf } from '@storybook/react';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -33,6 +33,8 @@ const columns = [
 ];
 
 const KitchenSink = () => {
+  const [myData, setMyData] = useState(data);
+
   const [selectableRows, setSelectableRows] = React.useState(false);
   const [noSelectAll, setNoSelectAll] = React.useState(false);
   const [selectableRowsVisibleOnly, setSelectableRowsVisibleOnly] = React.useState(false);
@@ -54,6 +56,20 @@ const KitchenSink = () => {
   const [fixedHeader, setFixedheader] = React.useState(false);
   const [direction, setDirection] = React.useState(false);
   const [directionValue, setDirectionValue] = React.useState('auto');
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setMyData(d => {
+        const { baseTitle } = d[10];
+        const updated = [...d];
+        updated[10].title = `${baseTitle} ${new Date()}`;
+
+        return [...updated];
+      });
+    }, 1000);
+
+    return () => { clearInterval(timer); };
+  }, []);
 
   return (
     <div>
@@ -214,8 +230,8 @@ const KitchenSink = () => {
       <DataTable
         title="Movie List"
         columns={columns}
-        data={data}
-        defaultSortField="title"
+        data={myData}
+        // defaultSortField="title"
         selectableRows={selectableRows}
         selectableRowsNoSelectAll={noSelectAll}
         selectableRowsHighlight={selectableRowsHighlight}

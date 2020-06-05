@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useState, useEffect } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import TableCell from './TableCell';
@@ -36,7 +36,7 @@ const TableRowStyle = styled.div`
   ${props => props.extendedRowStyle};
 `;
 
-const TableRow = memo(({
+const TableRow = ({
   id,
   keyField,
   columns,
@@ -150,7 +150,7 @@ const TableRow = memo(({
       )}
     </>
   );
-});
+};
 
 TableRow.propTypes = {
   id: PropTypes.any.isRequired,
